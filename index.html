@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Third Annual Girls Trip — Boston 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy:      #1C2E4A;
+      --blue:      #4A7FA5;
+      --light-blue:#B8D4E8;
+      --sand:      #D9C9A8;
+      --sand-light:#F0E9D8;
+      --red:       #B5341C;
+      --red-light: #D4614A;
+      --white:     #FAFAF7;
+      --text:      #1C2E4A;
+      --muted:     #6B7F96;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      background: var(--white);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ── GRAIN OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1000;
+      opacity: .028;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 40px;
+      background: rgba(28, 46, 74, 0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(184, 212, 232, 0.15);
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      color: var(--sand);
+      letter-spacing: .08em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: .72rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--light-blue);
+      text-decoration: none;
+      transition: color .2s;
+    }
+
+    .nav-links a:hover { color: var(--sand); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 24px 80px;
+      position: relative;
+      background: var(--navy);
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(74,127,165,.35) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 40% at 20% 100%, rgba(181,52,28,.12) 0%, transparent 60%);
+    }
+
+    .hero::after {
+      content: '🦞';
+      position: absolute;
+      bottom: -20px;
+      right: 5%;
+      font-size: clamp(120px, 20vw, 260px);
+      opacity: .06;
+      pointer-events: none;
+      transform: scaleX(-1);
+    }
+
+    .hero-eyebrow {
+      font-family: 'Jost', sans-serif;
+      font-size: .7rem;
+      font-weight: 500;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: var(--light-blue);
+      margin-bottom: 20px;
+      animation: fadeUp .8s ease both;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 9vw, 7.5rem);
+      line-height: 1.0;
+      color: var(--white);
+      margin-bottom: 10px;
+      animation: fadeUp .8s .15s ease both;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--sand);
+    }
+
+    .hero-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+      font-style: italic;
+      color: var(--light-blue);
+      margin-bottom: 32px;
+      animation: fadeUp .8s .3s ease both;
+    }
+
+    .hero-date {
+      font-size: .72rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--sand);
+      border: 1px solid rgba(217, 201, 168, .35);
+      padding: 8px 22px;
+      border-radius: 30px;
+      animation: fadeUp .8s .45s ease both;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      animation: fadeIn 1s 1s ease both;
+    }
+
+    .hero-scroll span {
+      font-size: .6rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 36px;
+      background: linear-gradient(to bottom, var(--light-blue), transparent);
+      animation: scrollLine 2s 1.5s ease-in-out infinite;
+    }
+
+    /* ── PHOTO STRIP ── */
+    .photo-strip {
+      display: flex;
+      height: 260px;
+      overflow: hidden;
+    }
+
+    .photo-strip .photo-slot {
+      flex: 1;
+      background: var(--light-blue);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .photo-strip .photo-slot:nth-child(2) { background: #8BAFC9; }
+    .photo-strip .photo-slot:nth-child(3) { background: var(--navy); }
+    .photo-strip .photo-slot:nth-child(4) { background: var(--sand); }
+    .photo-strip .photo-slot:nth-child(5) { background: #7A9BB8; }
+
+    .photo-strip .photo-label {
+      position: absolute;
+      bottom: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: .6rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.7);
+      white-space: nowrap;
+      font-family: 'Jost', sans-serif;
+    }
+
+    .photo-slot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .5s ease;
+    }
+
+    .photo-slot:hover img { transform: scale(1.04); }
+
+    /* ── SECTION BASE ── */
+    section { padding: 90px 20px; }
+
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    .section-eyebrow {
+      font-size: .68rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      line-height: 1.15;
+      color: var(--navy);
+      margin-bottom: 14px;
+    }
+
+    .section-title em { font-style: italic; color: var(--blue); }
+
+    .section-rule {
+      width: 48px;
+      height: 2px;
+      background: var(--red);
+      margin-bottom: 40px;
+    }
+
+    /* ── DETAILS BAND ── */
+    .details-band {
+      background: var(--navy);
+      padding: 56px 20px;
+    }
+
+    .details-grid {
+      max-width: 980px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .detail-card {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(184,212,232,.12);
+      padding: 36px 28px;
+      text-align: center;
+    }
+
+    .detail-card:first-child { border-radius: 4px 0 0 4px; }
+    .detail-card:last-child  { border-radius: 0 4px 4px 0; }
+
+    .detail-icon { font-size: 1.5rem; margin-bottom: 12px; }
+
+    .detail-label {
+      font-size: .62rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--light-blue);
+      margin-bottom: 8px;
+    }
+
+    .detail-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+
+    .detail-sub {
+      font-size: .75rem;
+      color: var(--muted);
+    }
+
+    /* ── ITINERARY ── */
+    .itinerary-section { background: var(--sand-light); }
+
+    .day-block {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      margin-bottom: 60px;
+      position: relative;
+    }
+
+    .day-block::before {
+      content: '';
+      position: absolute;
+      left: 198px;
+      top: 10px;
+      bottom: -60px;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--blue), rgba(74,127,165,0));
+    }
+
+    .day-block:last-child::before { display: none; }
+
+    .day-label {
+      padding-right: 30px;
+      padding-top: 4px;
+    }
+
+    .day-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      color: var(--navy);
+      line-height: 1.2;
+    }
+
+    .day-date {
+      font-size: .68rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .day-events { padding-left: 30px; }
+
+    .event {
+      display: flex;
+      gap: 18px;
+      margin-bottom: 28px;
+      position: relative;
+    }
+
+    .event::before {
+      content: '';
+      position: absolute;
+      left: -34px;
+      top: 6px;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--blue);
+      border: 2px solid var(--sand-light);
+      box-shadow: 0 0 0 2px var(--blue);
+    }
+
+    .event-time {
+      font-size: .68rem;
+      letter-spacing: .1em;
+      color: var(--muted);
+      min-width: 50px;
+      padding-top: 3px;
+    }
+
+    .event-content { flex: 1; }
+
+    .event-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+
+    .event-desc {
+      font-size: .82rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 8px;
+    }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+
+    .tag {
+      font-size: .58rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-weight: 500;
+    }
+
+    .tag-food     { background: rgba(181,52,28,.1);  color: var(--red);  }
+    .tag-vibes    { background: rgba(74,127,165,.1); color: var(--blue); }
+    .tag-travel   { background: rgba(28,46,74,.08);  color: var(--navy); }
+    .tag-culture  { background: rgba(217,201,168,.4);color: #7A6340; }
+    .tag-shopping { background: rgba(74,127,165,.08);color: #2E6E96; }
+    .tag-hotel    { background: rgba(217,201,168,.5);color: #6B5533; }
+
+    /* ── HIGHLIGHTS ── */
+    .highlight-band {
+      background: var(--red);
+      padding: 70px 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .highlight-band::before {
+      content: '🦞🦞🦞';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      font-size: 200px;
+      opacity: .04;
+      pointer-events: none;
+      letter-spacing: 40px;
+    }
+
+    .highlight-eyebrow {
+      font-size: .68rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.65);
+      margin-bottom: 10px;
+    }
+
+    .highlight-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 4rem);
+      color: var(--white);
+      margin-bottom: 16px;
+      line-height: 1.1;
+    }
+
+    .highlight-title em { font-style: italic; color: var(--sand); }
+
+    .highlight-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-style: italic;
+      color: rgba(255,255,255,.8);
+      max-width: 500px;
+      margin: 0 auto 36px;
+    }
+
+    .highlight-checklist {
+      list-style: none;
+      display: inline-flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      background: rgba(0,0,0,.15);
+      padding: 28px 36px;
+      border-radius: 6px;
+      border: 1px solid rgba(255,255,255,.12);
+    }
+
+    .highlight-checklist li {
+      font-size: .82rem;
+      color: rgba(255,255,255,.9);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .highlight-checklist li::before {
+      content: '✦';
+      color: var(--sand);
+      font-size: .7rem;
+    }
+
+    /* ── RECOMMENDATIONS ── */
+    .recs-section { background: var(--white); }
+
+    .recs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 16px;
+    }
+
+    .rec-card {
+      border: 1px solid rgba(28,46,74,.1);
+      border-radius: 4px;
+      padding: 26px 22px;
+      transition: box-shadow .2s, transform .2s;
+      position: relative;
+      background: var(--white);
+    }
+
+    .rec-card:hover {
+      box-shadow: 0 8px 28px rgba(28,46,74,.1);
+      transform: translateY(-2px);
+    }
+
+    .rec-icon { font-size: 1.4rem; margin-bottom: 12px; }
+
+    .rec-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+
+    .rec-neighborhood {
+      font-size: .65rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 10px;
+    }
+
+    .rec-desc {
+      font-size: .8rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .rec-category {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      font-size: .58rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--blue);
+      font-weight: 500;
+    }
+
+    /* ── FLIGHTS SECTION ── */
+    .flights-section { background: var(--sand-light); }
+
+    .flights-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .flight-card {
+      background: var(--navy);
+      border-radius: 6px;
+      padding: 32px 28px;
+      color: var(--white);
+    }
+
+    .flight-card-label {
+      font-size: .62rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--light-blue);
+      margin-bottom: 16px;
+    }
+
+    .flight-route {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .flight-city {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      color: var(--white);
+    }
+
+    .flight-arrow {
+      font-size: 1rem;
+      color: var(--light-blue);
+      flex: 1;
+      text-align: center;
+    }
+
+    .flight-detail {
+      display: flex;
+      justify-content: space-between;
+      border-top: 1px solid rgba(184,212,232,.15);
+      padding-top: 14px;
+    }
+
+    .flight-detail-item { text-align: center; }
+
+    .flight-detail-label {
+      font-size: .6rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .flight-detail-value {
+      font-size: .9rem;
+      color: var(--sand);
+      font-weight: 500;
+    }
+
+    /* ── COLOR FOOTER ── */
+    .color-bar {
+      display: flex;
+      height: 6px;
+    }
+
+    .color-bar span {
+      flex: 1;
+    }
+
+    footer {
+      background: var(--navy);
+      text-align: center;
+      padding: 48px 20px;
+    }
+
+    .footer-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-style: italic;
+      color: var(--sand);
+      margin-bottom: 10px;
+    }
+
+    .footer-sub {
+      font-size: .72rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    @keyframes scrollLine {
+      0%, 100% { transform: scaleY(1); opacity: 1; }
+      50%       { transform: scaleY(.5); opacity: .4; }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 680px) {
+      nav { padding: 14px 20px; }
+      .nav-links { gap: 18px; }
+      .nav-links li:nth-child(n+4) { display: none; }
+
+      .details-grid { grid-template-columns: 1fr; gap: 2px; }
+      .detail-card:first-child { border-radius: 4px 4px 0 0; }
+      .detail-card:last-child  { border-radius: 0 0 4px 4px; }
+
+      .day-block { grid-template-columns: 1fr; }
+      .day-block::before { display: none; }
+      .day-label { margin-bottom: 20px; padding-right: 0; }
+      .day-events { padding-left: 20px; }
+
+      .flights-grid { grid-template-columns: 1fr; }
+
+      .photo-strip .photo-slot:nth-child(n+4) { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">Girls Trip '26</div>
+    <ul class="nav-links">
+      <li><a href="#itinerary">Itinerary</a></li>
+      <li><a href="#highlights">Highlights</a></li>
+      <li><a href="#recs">Explore</a></li>
+      <li><a href="#flights">Flights</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <p class="hero-eyebrow">Boston, Massachusetts &nbsp;·&nbsp; May 2026</p>
+    <h1 class="hero-title">Third Annual<br /><em>Girls Trip</em></h1>
+    <p class="hero-subtitle">Lobsters, cobblestones & good company</p>
+    <div class="hero-date">May 28 – 31, 2026</div>
+    <div class="hero-scroll">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- PHOTO STRIP -->
+  <div class="photo-strip">
+    <div class="photo-slot"><img src="boston-library.jpg" alt="Boston Public Library" /><span class="photo-label">Boston Public Library</span></div>
+    <div class="photo-slot"><img src="back-bay-street.jpg" alt="Newbury Street" /><span class="photo-label">Newbury Street</span></div>
+    <div class="photo-slot"><img src="brownstones.jpg" alt="Beacon Hill" /><span class="photo-label">Beacon Hill</span></div>
+    <div class="photo-slot"><img src="public-garden.jpg" alt="Public Garden" /><span class="photo-label">Public Garden</span></div>
+    <div class="photo-slot"><img src="gardner-museum.jpg" alt="Gardner Museum" /><span class="photo-label">Gardner Museum</span></div>
+  </div>
+
+  <!-- TRIP DETAILS BAND -->
+  <div class="details-band">
+    <div class="details-grid">
+      <div class="detail-card">
+        <div class="detail-icon">🏨</div>
+        <div class="detail-label">Home Base</div>
+        <div class="detail-value">The Westin Copley Place</div>
+        <div class="detail-sub">Back Bay, Boston</div>
+      </div>
+      <div class="detail-card">
+        <div class="detail-icon">👯‍♀️</div>
+        <div class="detail-label">The Crew</div>
+        <div class="detail-value">Megan, Lisa, Emily & Kate</div>
+        <div class="detail-sub">Third year running</div>
+      </div>
+      <div class="detail-card">
+        <div class="detail-icon">🗓️</div>
+        <div class="detail-label">Dates</div>
+        <div class="detail-value">May 28 – 31</div>
+        <div class="detail-sub">4 days · 3 nights</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ITINERARY -->
+  <section class="itinerary-section" id="itinerary">
+    <div class="container">
+      <p class="section-eyebrow">Day by Day</p>
+      <h2 class="section-title">The <em>Itinerary</em></h2>
+      <div class="section-rule"></div>
+
+      <!-- DAY 1 -->
+      <div class="day-block">
+        <div class="day-label">
+          <div class="day-name">Thursday</div>
+          <div class="day-date">May 28</div>
+        </div>
+        <div class="day-events">
+          <div class="event">
+            <div class="event-time">AM</div>
+            <div class="event-content">
+              <div class="event-title">Depart for Boston — DL0855</div>
+              <div class="event-desc">Boarding passes ready, snacks packed. Boston awaits.</div>
+              <div class="tags">
+                <span class="tag tag-travel">Travel</span>
+              </div>
+            </div>
+          </div>
+          <div class="event">
+            <div class="event-time">Arrival</div>
+            <div class="event-content">
+              <div class="event-title">Land in Boston &amp; Check In</div>
+              <div class="event-desc">Head to The Westin Copley Place in the heart of Back Bay. Drop bags, freshen up, and take in the view.</div>
+              <div class="tags">
+                <span class="tag tag-hotel">Hotel</span>
+                <span class="tag tag-travel">Travel</span>
+              </div>
+            </div>
+          </div>
+          <div class="event">
+            <div class="event-time">PM</div>
+            <div class="event-content">
+              <div class="event-title">First Look at Back Bay</div>
+              <div class="event-desc">Stroll Newbury Street, take in the brownstones, and shake off the travel day. Back Bay is basically an open-air magazine spread.</div>
+              <div class="tags">
+                <span class="tag tag-vibes">Vibes</span>
+              </div>
+            </div>
+          </div>
+          <div class="event">
+            <div class="event-time">Evening</div>
+            <div class="event-content">
+              <div class="event-title">Dinner in the Neighborhood</div>
+              <div class="event-desc">First meal in Boston. Celebrate the official start of Girls Trip Year Three with something delicious.</div>
+              <div class="tags">
+                <span class="tag tag-food">Food</span>
+                <span class="tag tag-vibes">Vibes</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DAY 2 -->
+      <div class="day-block">
+        <div class="day-label">
+          <div class="day-name">Friday</div>
+          <div class="day-date">May 29</div>
+        </div>
+        <div class="day-events">
+          <div class="event">
+            <div class="event-time">Morning</div>
+            <div class="event-content">
+              <div class="event-title">Emily & Kate Arrive from Connecticut</div>
+              <div class="event-desc">The full crew assembles. Four people. One city. Third annual chaos officially begins.</div>
+              <div class="tags">
+                <span class="tag tag-travel">Travel</span>
+                <span class="tag tag-vibes">Vibes</span>
+              </div>
+            </div>
+          </div>
+          <div class="event">
+            <div class="event-time">Morning</div>
+            <div class="event-content">
+              <div class="event-title">Tatte Bakery</div>
+              <div class="event-desc">Start the day right with Tatte's legendary pastries and coffee. The tahini cookie situation alone is worth a trip to Boston.</div>
+              <div class="tags">
+                <span class="tag tag-food">Food</span>
+              </div>
+            </div>
+          </div>
+          <div class="event">
+            <div class="event-time">Mid-AM</div>
+            <div class="event-content">
+              <div class="event-title">Boston Public Library</div>
+              <div class="event-desc">One of the greatest libraries in America — the reading rooms, the courtyard, the murals. Even if you don't read a page, it's worth an hour.</div>
+              <div class="tags">
+                <span class="tag tag-culture">Culture</span>
+                <span class="tag tag-vibes">Vibes</span>
+              </div>
+            </div>
+          </div>
+          <div class="event">
+            <div class="event-time">Noon</div>
+            <div class="event-content">
+              <div class="event-title">Public Garden &amp; the Swan Boats</div>
+              <div class="event-desc">Boston's most iconic green space. Walk the paths, spot the ducks, maybe ride a swan boat. Mandatory photo stop.</div>
+              <div class="tags">
+                <span class="tag tag-vibes">Vibes</span>
+              </div>
+            </div>
+          </div>
+          <div class="event">
+            <div class="event-time">Afternoon</div>
+            <div class="event-content">
+              <div class="event-title">Beacon Hill Wander</div>
+              <div class="event-desc">Cobblestone streets, gas lanterns, and Federal-style rowhouses. Walk from the State House down Acorn Street — Boston's most photographed block.</div>
+              <div class="tags">
+                <span class="tag tag-vibes">Vibes</span>
+                <span class="tag tag-shopping">Shopping</span>
+              </div>
+            </div>
+          </div>
+          <div class="event">
+            <div class="event-time">Late PM</div>
+            <div class="event-content">
+              <div class="event-title">Beacon Hill Books &amp; Cafe</div>
+              <div class="event-desc">A dream bookshop with a cozy cafe tucked inside. Browse, sip something warm, and pick up a read for the trip home.</div>
+              <div class="tags">
+                <span class="tag tag-shopping">Shopping</span>
+                <span class="tag tag-food">Coffee</span>
+              </div>
+            </div>
+          </div>
+          <div class="event">
+            <div class="event-time">Evening</div>
+            <div class="event-content">
+              <div class="event-title">Six/West Rooftop</div>
+              <div class="event-desc">Rooftop cocktails overlooking the Back Bay skyline. The kind of place that makes a great trip feel like a great trip.</div>
+              <div class="tags">
+                <span class="tag tag-food">Drinks</span>
+                <span class="tag tag-vibes">Vibes</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DAY 3 -->
+      <div class="day-block">
+        <div class="day-label">
+          <div class="day-name">Saturday</div>
+          <div class="day-date">May 30</div>
+        </div>
+        <div class="day-events">
+          <div class="event">
+            <div class="event-time">Morning</div>
+            <div class="event-content">
+              <div class="event-title">Tatte Bakery — Round Two</div>
+              <div class="event-desc">You'll want to go twice. No explanation required.</div>
+              <div class="tags">
+                <span class="tag tag-food">Food</span>
+              </div>
+            </div>
+          </div>
+          <div class="event">
+            <div class="event-time">Mid-AM</div>
+            <div class="event-content">
+              <div class="event-title">Isabella Stewart Gardner Museum</div>
+              <div class="event-desc">One of the most singular museums in the world. The interior courtyard alone is otherworldly. Don't miss the Titian room or the story of the 1990 art heist — the empty frames are still there.</div>
+              <div class="tags">
+                <span class="tag tag-culture">Culture</span>
+                <span class="tag tag-vibes">Vibes</span>
+              </div>
+            </div>
+          </div>
+          <div class="event">
+            <div class="event-time">Afternoon</div>
+            <div class="event-content">
+              <div class="event-title">Cafe Salvaje</div>
+              <div class="event-desc">A must-stop for coffee and a bite. Great atmosphere for an afternoon pause before diving back into the neighborhood.</div>
+              <div class="tags">
+                <span class="tag tag-food">Food</span>
+                <span class="tag tag-vibes">Vibes</span>
+              </div>
+            </div>
+          </div>
+          <div class="event">
+            <div class="event-time">Evening</div>
+            <div class="event-content">
+              <div class="event-title">Last Night Dinner — Lobster Required</div>
+              <div class="event-desc">It's the last night and you're in New England. Order the lobster. This is not a suggestion.</div>
+              <div class="tags">
+                <span class="tag tag-food">Food</span>
+                <span class="tag tag-vibes">Vibes</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DAY 4 -->
+      <div class="day-block">
+        <div class="day-label">
+          <div class="day-name">Sunday</div>
+          <div class="day-date">May 31</div>
+        </div>
+        <div class="day-events">
+          <div class="event">
+            <div class="event-time">Morning</div>
+            <div class="event-content">
+              <div class="event-title">Final Morning in Boston</div>
+              <div class="event-desc">Last walk through the neighborhood. Pick up anything you forgot from the weekend. Say goodbye to the cobblestones.</div>
+              <div class="tags">
+                <span class="tag tag-vibes">Vibes</span>
+              </div>
+            </div>
+          </div>
+          <div class="event">
+            <div class="event-time">Midday</div>
+            <div class="event-content">
+              <div class="event-title">Check Out &amp; Head to Airport</div>
+              <div class="event-desc">Check out of the Westin, grab one last coffee for the road, and head to Logan for DL0923.</div>
+              <div class="tags">
+                <span class="tag tag-hotel">Hotel</span>
+                <span class="tag tag-travel">Travel</span>
+              </div>
+            </div>
+          </div>
+          <div class="event">
+            <div class="event-time">PM</div>
+            <div class="event-content">
+              <div class="event-title">Depart Boston — DL0923</div>
+              <div class="event-desc">Already planning Year Four.</div>
+              <div class="tags">
+                <span class="tag tag-travel">Travel</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- HIGHLIGHTS BAND -->
+  <div class="highlight-band" id="highlights">
+    <p class="highlight-eyebrow">The Must-Do</p>
+    <h2 class="highlight-title">The <em>Lobster Dinner</em></h2>
+    <p class="highlight-sub">A New England rite of passage. Saturday night, full send.</p>
+    <ul class="highlight-checklist">
+      <li>Whole steamed lobster, cracker in hand</li>
+      <li>Butter situation: fully optimized</li>
+      <li>Clam chowder as a mandatory starter</li>
+      <li>Oysters if the mood strikes</li>
+      <li>Good company, great stories</li>
+      <li>Annual Girls Trip tradition documented</li>
+    </ul>
+  </div>
+
+  <!-- PHOTO STRIP 2 -->
+  <div class="photo-strip">
+    <div class="photo-slot" style="background:#8BAFC9;"><span class="photo-label">Isabella Gardner</span></div>
+    <div class="photo-slot" style="background:var(--navy);"><span class="photo-label">Public Garden</span></div>
+    <div class="photo-slot" style="background:#5D8BA3;"><span class="photo-label">Newbury St</span></div>
+    <div class="photo-slot" style="background:#C4A882;"><span class="photo-label">Tatte</span></div>
+    <div class="photo-slot" style="background:#7A9BB8;"><span class="photo-label">Rooftop</span></div>
+  </div>
+
+  <!-- RECOMMENDATIONS -->
+  <section class="recs-section" id="recs">
+    <div class="container">
+      <p class="section-eyebrow">Explore Boston</p>
+      <h2 class="section-title"><em>The List</em></h2>
+      <div class="section-rule"></div>
+      <div class="recs-grid">
+
+        <div class="rec-card">
+          <div class="rec-icon">📚</div>
+          <div class="rec-name">Beacon Hill Books &amp; Cafe</div>
+          <div class="rec-neighborhood">Beacon Hill</div>
+          <div class="rec-desc">An independent bookshop with a cafe tucked inside — two of the best things in one charming Beacon Hill location. Perfect for an afternoon pause.</div>
+          <div class="rec-category">Books · Coffee</div>
+        </div>
+
+        <div class="rec-card">
+          <div class="rec-icon">🍸</div>
+          <div class="rec-name">Six/West Rooftop</div>
+          <div class="rec-neighborhood">Back Bay</div>
+          <div class="rec-desc">Rooftop bar with sweeping views of Back Bay. Come for cocktails at golden hour and stay for the skyline as the lights come on.</div>
+          <div class="rec-category">Drinks · Views</div>
+        </div>
+
+        <div class="rec-card">
+          <div class="rec-icon">🥐</div>
+          <div class="rec-name">Tatte Bakery</div>
+          <div class="rec-neighborhood">Back Bay · Multiple Locations</div>
+          <div class="rec-desc">Boston's beloved Israeli-inspired bakery. The pastries, the shakshuka, the tahini cookie. Go twice — you'll want to.</div>
+          <div class="rec-category">Breakfast · Coffee</div>
+        </div>
+
+        <div class="rec-card">
+          <div class="rec-icon">🏛️</div>
+          <div class="rec-name">Boston Public Library</div>
+          <div class="rec-neighborhood">Back Bay</div>
+          <div class="rec-desc">A Beaux-Arts masterpiece and one of the greatest libraries in the US. The Bates Hall reading room and the central courtyard are must-sees.</div>
+          <div class="rec-category">Culture · Architecture</div>
+        </div>
+
+        <div class="rec-card">
+          <div class="rec-icon">🌷</div>
+          <div class="rec-name">Public Garden</div>
+          <div class="rec-neighborhood">Back Bay</div>
+          <div class="rec-desc">Boston's iconic Victorian garden with swan boats on the lagoon. Best in late May when everything is in bloom. Classic photo territory.</div>
+          <div class="rec-category">Outdoors · Vibes</div>
+        </div>
+
+        <div class="rec-card">
+          <div class="rec-icon">☕</div>
+          <div class="rec-name">Cafe Salvaje</div>
+          <div class="rec-neighborhood">Fenway Area</div>
+          <div class="rec-desc">A standout neighborhood cafe known for great coffee and atmosphere. The kind of place you linger longer than you planned.</div>
+          <div class="rec-category">Coffee · Food</div>
+        </div>
+
+        <div class="rec-card">
+          <div class="rec-icon">🖼️</div>
+          <div class="rec-name">Isabella Stewart Gardner Museum</div>
+          <div class="rec-neighborhood">Fenway</div>
+          <div class="rec-desc">A Venetian-style palazzo filled with one of the world's great private art collections. The 1990 heist left empty frames on the walls — they remain to this day.</div>
+          <div class="rec-category">Culture · Art</div>
+        </div>
+
+        <div class="rec-card">
+          <div class="rec-icon">🧱</div>
+          <div class="rec-name">Beacon Hill</div>
+          <div class="rec-neighborhood">Beacon Hill</div>
+          <div class="rec-desc">Boston's most picturesque neighborhood. Gas lanterns, brick sidewalks, Acorn Street. Wander without an agenda and you'll love every turn.</div>
+          <div class="rec-category">Neighborhood · Vibes</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FLIGHTS -->
+  <section class="flights-section" id="flights">
+    <div class="container">
+      <p class="section-eyebrow">Getting There</p>
+      <h2 class="section-title">Flights &amp; <em>Logistics</em></h2>
+      <div class="section-rule"></div>
+      <div class="flights-grid">
+        <div class="flight-card">
+          <div class="flight-card-label">✈️ &nbsp; Outbound — Thursday May 28</div>
+          <div class="flight-route">
+            <div class="flight-city">Home</div>
+            <div class="flight-arrow">——✈——</div>
+            <div class="flight-city">BOS</div>
+          </div>
+          <div class="flight-detail">
+            <div class="flight-detail-item">
+              <div class="flight-detail-label">Flight</div>
+              <div class="flight-detail-value">DL 0855</div>
+            </div>
+            <div class="flight-detail-item">
+              <div class="flight-detail-label">Airline</div>
+              <div class="flight-detail-value">Delta</div>
+            </div>
+            <div class="flight-detail-item">
+              <div class="flight-detail-label">Date</div>
+              <div class="flight-detail-value">May 28</div>
+            </div>
+          </div>
+        </div>
+        <div class="flight-card">
+          <div class="flight-card-label">✈️ &nbsp; Return — Sunday May 31</div>
+          <div class="flight-route">
+            <div class="flight-city">BOS</div>
+            <div class="flight-arrow">——✈——</div>
+            <div class="flight-city">Home</div>
+          </div>
+          <div class="flight-detail">
+            <div class="flight-detail-item">
+              <div class="flight-detail-label">Flight</div>
+              <div class="flight-detail-value">DL 0923</div>
+            </div>
+            <div class="flight-detail-item">
+              <div class="flight-detail-label">Airline</div>
+              <div class="flight-detail-value">Delta</div>
+            </div>
+            <div class="flight-detail-item">
+              <div class="flight-detail-label">Date</div>
+              <div class="flight-detail-value">May 31</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COLOR BAR + FOOTER -->
+  <div class="color-bar">
+    <span style="background:var(--navy);"></span>
+    <span style="background:var(--blue);"></span>
+    <span style="background:var(--light-blue);"></span>
+    <span style="background:var(--sand);"></span>
+    <span style="background:var(--red);"></span>
+  </div>
+
+  <footer>
+    <div class="footer-title">Third Annual Girls Trip — Boston 2026</div>
+    <div class="footer-sub">Megan &amp; Lisa &nbsp;·&nbsp; May 28–31 &nbsp;·&nbsp; Year Three</div>
+  </footer>
+
+</body>
+</html>
